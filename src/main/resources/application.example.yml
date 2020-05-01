@@ -81,5 +81,5 @@ app:
 
 server:
   error:
-    include-stacktrace: neverserver:
+    include-stacktrace: neverserver
   use-forward-headers: true
