@@ -8,12 +8,12 @@
         <version>2.1.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.learntechfree</groupId>
+    <groupId>com.khajastation</groupId>
     <artifactId>api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>api</name>
-    <description>Learn Tech Free Api</description>
+    <description>Khaja station api</description>
 
     <profiles>
         <profile>
