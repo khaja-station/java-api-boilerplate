@@ -1,0 +1,89 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/khaja_station_db?useSSL=false
+    username: postgres
+    password: postgres
+
+  redis:
+    host: localhost
+    port: 6379
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 'learntechfreeclientid'
+            clientSecret: 'learntechfreeclientscret'
+            redirectUriTemplate: "{baseUrl}/v1/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+          facebook:
+            clientId: 'learntechfreeclientid'
+            clientSecret: 'learntechfreeappsecret'
+            redirectUriTemplate: "{baseUrl}/v1/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - public_profile
+
+        provider:
+          facebook:
+            authorizationUri: https://www.FACEBOOK.com/v3.0/dialog/oauth
+            tokenUri: https://graph.FACEBOOK.com/v3.0/oauth/access_token
+            userInfoUri: https://graph.FACEBOOK.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+
+mail:
+  host: smtp.gmail.com
+  port: 587
+  username:
+  password:
+  verificationapi: http://localhost:3000/user/verify-email?token=
+  resetpasswordapi: http://localhost:3000/user/reset-password?token=
+  baseUrl: http://localhost:3000/
+  properties:
+    mail:
+      smtp:
+        auth: true
+        connectiontimeout: 5000
+        timeout: 5000
+        writetimeout: 5000
+        starttls:
+          enable: true
+
+twilio:
+  accountSid:
+  authToken:
+  fromPhoneNumber:
+
+app:
+  auth:
+    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    tokenExpirationMsec: 864000000
+  oauth2:
+    # After successfully authenticating with the OAuth2 Provider,
+    # we'll be generating an auth token for the member and sending the token to the
+    # redirectUri mentioned by the frontend client in the /oauth2/authorize request.
+    # We're not using cookies because they won't work well in mobile clients.
+    authorizedRedirectUris:
+      - http://localhost:3000/oauth2/redirect
+      - myandroidapp://oauth2/redirect
+      - myiosapp://oauth2/redirect
+  subscriptionsecret:
+
+server:
+  error:
+    include-stacktrace: never
+  use-forward-headers: true
+  port: 5000

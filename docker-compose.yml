@@ -3,7 +3,7 @@ version: '3.7'
 services:
   db:
     image: "postgres"
-    container_name: 'ltf-db'
+    container_name: 'ks-db'
     restart: 'no'
     ports:
       - '5432:5432'
@@ -12,11 +12,11 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: ltf_database
+      POSTGRES_DB: khaja_station_db
       PGDATA : /var/lib/postgresql/data/pgdata
   redis:
     image: 'bitnami/redis:latest'
-    container_name: 'ltf-redis'
+    container_name: 'ks-redis'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
