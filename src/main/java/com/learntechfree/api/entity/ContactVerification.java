@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@Table(name = "contact_verifications")
 public class ContactVerification extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

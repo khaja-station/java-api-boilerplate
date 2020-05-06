@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -19,6 +20,7 @@ import java.util.stream.Stream;
 @Getter
 @Setter
 @ToString
+@Table(name = "members")
 public class Member extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/<db_name>?useSSL=false
-    username:
-    password:
+    url: jdbc:postgresql://localhost:5432/db_name?useSSL=false
+    username: postgres
+    password: postgres
 
   redis:
-    host:
-    port:
+    host: localhost
+    port: 6379
 
   jpa:
     show-sql: true
@@ -15,21 +15,24 @@ spring:
       naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
   security:
     oauth2:
       client:
         registration:
           google:
-            clientId: google_app_id
-            clientSecret: google_app_secret
+            clientId: 'learntechfreeclientid'
+            clientSecret: 'learntechfreeclientscret'
             redirectUriTemplate: "{baseUrl}/v1/oauth2/callback/{registrationId}"
             scope:
               - email
               - profile
           facebook:
-            clientId: facebook_app_id
-            clientSecret: facebook_app_secret
+            clientId: 'learntechfreeclientid'
+            clientSecret: 'learntechfreeappsecret'
             redirectUriTemplate: "{baseUrl}/v1/oauth2/callback/{registrationId}"
             scope:
               - email
@@ -77,9 +80,10 @@ app:
       - http://localhost:3000/oauth2/redirect
       - myandroidapp://oauth2/redirect
       - myiosapp://oauth2/redirect
-  subscriptionsecret: 
+  subscriptionsecret:
 
 server:
   error:
-    include-stacktrace: neverserver
+    include-stacktrace: never
   use-forward-headers: true
+  port: 5000
